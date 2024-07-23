@@ -1,11 +1,105 @@
 @import 'vars';
 
 .Hero {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+
     .logo {
         position: absolute;
-        top: 43px;
-        left: 58px;
-        width: 56px;
-        height: 55px;
+        top: 20px;
+        left: 40px;
+        width: 3vw;
+        min-width: 30px;
+        z-index: 2;
+    }
+
+    .main-info {
+        width: calc(100vw - 60px);
+        height: calc(100vh - 60px);
+        display: grid;
+        place-items: center;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 40px;
+        z-index: 2;
+
+        .image-container {
+            position: relative;
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr auto auto 1fr;
+            justify-items: center;
+
+            h2,
+            img,
+            h3 {
+                grid-column: 1;
+            }
+
+            h2 {
+                text-align: center;
+                grid-row: 2 / 3;
+                font-size: 7vw;
+                color: $--firts-blue;
+            }
+
+            img {
+                grid-row: 1 / 5;
+                width: 34vw;
+                height: auto;
+            }
+
+            h3 {
+                text-align: center;
+                grid-row: 3 / 4;
+                font-size: 4.5vw;
+                color: $--firts-blue;
+                text-shadow:
+                    -2px -2px 0 $--white,
+                    2px -2px 0 $--white,
+                    -2px 2px 0 $--white,
+                    2px 2px 0 $--white;
+            }
+        }
+
+        .list-container {
+            width: calc(70vw);
+            display: flex;
+            list-style: none;
+            align-items: center;
+            justify-content: space-between;
+            gap: 5px;
+            flex-wrap: wrap;
+
+            li a {
+                color: $--second-blue;
+            }
+        }
+    }
+}
+
+.Hero::after {
+    right: calc( 100vh * -1 - 55px);
+    position: absolute;
+    content: '';
+    width: 100vh;
+    height: 100vh;
+    border-radius: 50%;
+    background: $--white;
+    box-shadow: 0px 0px 55px 20px $--black-tr;
+    will-change: transform;
+    animation: circle-scale 4s infinite;
+    z-index: 1;
+}
+
+@keyframes circle-scale {
+    0% {
+        transform: translateX(calc(100vw / 12 * -1)) scale(1);
+    }
+    100% {
+        transform: translate(calc(100vw / 12 * -6 - 55px)) scale(3);
     }
 }
