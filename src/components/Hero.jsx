@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 import styles from '@styles/Hero.module.scss';
 
@@ -9,33 +10,33 @@ import hero_img from '@images/Telefono-01.png';
 const Hero = () => {
   return (
     <section className={styles.Hero}>
-      <Image src={logo_uno} className={styles.logo} />
+      <Image src={logo_uno} className={styles.logo} alt="Logo Motion" />
       <article className={styles['main-info']}>
         <div className={styles['image-container']}>
           <h2>BIENVENIDO A</h2>
-          <Image src={hero_img} />
+          <Image src={hero_img} alt="Imagen Hero" />
           <h3>MONITORING INNOVATION</h3>
         </div>
         <ul className={styles['list-container']}>
           <li className={styles.item}>
-            <a href="https://monitoringinnovation.com/" target="_blank">
+            <Link href="https://monitoringinnovation.com/" target="_blank">
               MONITORINGINNOVATION
-            </a>
+            </Link>
           </li>
           <li className={styles.item}>
-            <a href="https://gpscontrol.co/" target="_blank">
+            <Link href="https://gpscontrol.co/" target="_blank">
               GPS CONTROL
-            </a>
+            </Link>
           </li>
           <li className={styles.item}>
-            <a href="https://github.com/dan33pro/gpscontrol" target="_blank">
+            <Link href="https://github.com/dan33pro/gpscontrol" target="_blank">
               Link repo front
-            </a>
+            </Link>
           </li>
           <li className={styles.item}>
-            <a href="" target="_blank">
+            <Link href="https://github.com/dan33pro/api-gps-control" target="_blank">
               Link repo back
-            </a>
+            </Link>
           </li>
         </ul>
       </article>
