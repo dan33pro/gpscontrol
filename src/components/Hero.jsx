@@ -17,23 +17,23 @@ const Hero = () => {
           <Image src={hero_img} alt="Imagen Hero" />
           <h3>MONITORING INNOVATION</h3>
         </div>
-        <ul>
-          <li>
+        <ul className={styles['list-container']}>
+          <li className={styles.item}>
             <Link href="https://monitoringinnovation.com/" target="_blank">
               MONITORINGINNOVATION
             </Link>
           </li>
-          <li>
+          <li className={styles.item}>
             <Link href="https://gpscontrol.co/" target="_blank">
               GPS CONTROL
             </Link>
           </li>
-          <li>
+          <li className={styles.item}>
             <Link href="https://github.com/dan33pro/gpscontrol" target="_blank">
               Link repo front
             </Link>
           </li>
-          <li>
+          <li className={styles.item}>
             <Link href="https://github.com/dan33pro/api-gps-control" target="_blank">
               Link repo back
             </Link>
