@@ -9,6 +9,7 @@
     display: grid;
     grid-template-columns: 1fr;
     grid-auto-flow: row;
+    overflow-x: hidden;
 
     .titles, .registro {
         display: grid;
@@ -40,6 +41,7 @@
 
     .registro {
         border-bottom: 2px solid $--second-red;
+        will-change: transform;
 
         li {
             height: 36px;
@@ -79,6 +81,16 @@
         .item-btn.delete.isActive {
             cursor: pointer;
             background-image: url('../assets/icons/Icon_eliminar1.svg');
+        }
+    }
+
+    .registro.isDeleting {
+        animation: slide-out 200ms ease-in-out forwards;
+    }
+
+    @keyframes slide-out {
+        to {
+            transform: translateX(calc(100% * -1));
         }
     }
 }

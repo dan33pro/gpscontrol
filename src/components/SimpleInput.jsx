@@ -3,13 +3,15 @@ import AppContext from '@context/AppContext';
 import styles from '@styles/SimpleInput.module.scss';
 
 const SimpleInput = ({ type }) => {
-  const { state, valueBrand, updateBrand, valueBranch, updateBranch, valueApplicant, updateApplicant } = useContext(AppContext);
+  const { state, valueBrand, updateBrand, valueBranch, updateBranch, valueApplicant, updateApplicant, lastDelete } = useContext(AppContext);
   const [currentIcon, setCurrentIcon] = useState(getIconClass());
 
   const [isDisabled, setIsDisabled] = useState(true);
   const toggleDisabled = (newValue) => {
     setIsDisabled(newValue);
   };
+
+  const [isHiddenValue, setIsHiddenValue] = useState(false);
 
   function getIconClass() {
     switch (type) {
@@ -70,10 +72,22 @@ const SimpleInput = ({ type }) => {
     toggleDisabled(!state.isEditing && !state.isCreating);
   }, [state.isEditing, state.isCreating]);
 
+  useEffect(() => {
+    if (lastDelete.registro != null && lastDelete.index != -1) {
+      setIsHiddenValue(true);
+      setTimeout(() => {
+        setIsHiddenValue(false);
+      }, 400);
+    }
+  }, [lastDelete]);
+
   return (
     <div className={styles.SimpleInput}>
       <div className={`${styles['container-icon']} ${styles[currentIcon]}`}></div>
-      <input type="text" value={getValue()} onChange={handlerInput} placeholder={getPlaceholder()} disabled={isDisabled} />
+      <div className={styles.inputContainer}>
+        <input className={`${isHiddenValue ? styles.isHiidenValue : ''}`} type="text" value={getValue()} onChange={handlerInput} placeholder={getPlaceholder()} disabled={isDisabled} />
+        <div className={`${styles.transformedValue} ${isHiddenValue ? styles.isAnimated : ''}`}>{getValue()}</div>
+      </div>
     </div>
   );
 };

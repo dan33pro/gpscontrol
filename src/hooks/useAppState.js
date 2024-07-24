@@ -32,6 +32,18 @@ const useAppState = () => {
     });
   };
 
+  const [lastDelete, setLastDelete] = useState({
+    registro: null,
+    index: -1,
+  });
+
+  const updateLastDelete = (current) => {
+    setLastDelete({
+      registro: current.registro,
+      index: current.index,
+    });
+  };
+
   const [valueBrand, setValueBrand] = useState('');
   const updateBrand = (brand) => setValueBrand(brand);
 
@@ -60,6 +72,8 @@ const useAppState = () => {
     currentEdit,
     updateCurrentEdit,
     updateValuesInputs,
+    lastDelete,
+    updateLastDelete,
   };
 };
 
