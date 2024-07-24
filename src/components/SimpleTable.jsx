@@ -41,13 +41,36 @@ const dataDefault = [
 ];
 
 const SimpleTable = () => {
-  const { currentEdit, updateCurrentEdit, handlerEditing, updateValuesInputs } = useContext(AppContext);
-  const [registros] = useState(dataDefault);
+  const { currentEdit, updateCurrentEdit, updateLastDelete, handlerEditing, updateValuesInputs } = useContext(AppContext);
+  const [registros, setRegistros] = useState(dataDefault);
 
   const editRegistro = (registro, index) => {
     updateCurrentEdit({ registro, index });
     updateValuesInputs(registro.brand, registro.branch, registro.applicant);
     handlerEditing(true);
+  };
+
+  const [currentDelete, setCurrentDelete] = useState({
+    registro: null,
+    index: -1,
+  });
+
+  const updateCurrentDelete = (current) => {
+    setCurrentDelete({
+      registro: current.registro,
+      index: current.index,
+    });
+  };
+
+  const deleteRegistro = (registro, index) => {
+    updateCurrentDelete({ registro, index });
+    updateLastDelete({ registro, index });
+    const newRegistros = registros.filter((registro, i) => i != index);
+    setTimeout(() => {
+      updateCurrentDelete({ registro: null, index: -1 });
+      setRegistros(newRegistros);
+      updateValuesInputs(registro.brand, registro.branch, registro.applicant);
+    }, 200);
   };
 
   return (
@@ -60,7 +83,12 @@ const SimpleTable = () => {
       <section className={styles['info-container']}>
         {registros.map((registro, index) => {
           return (
-            <ul className={styles['registro']} key={`registro-${index}`}>
+            <ul
+              className={`
+                  ${styles['registro']}
+                  ${currentDelete.index == index ? styles.isDeleting : ''}`}
+              key={`registro-${index}`}
+            >
               <li>{registro.brand}</li>
               <li>{registro.branch}</li>
               <li>{registro.applicant}</li>
@@ -78,6 +106,7 @@ const SimpleTable = () => {
                     ${styles['item-btn']}
                     ${styles['delete']}
                     ${currentEdit.index == index || !currentEdit.registro ? styles.isActive : ''}`}
+                onClick={() => deleteRegistro(registro, index)}
               ></button>
             </ul>
           );

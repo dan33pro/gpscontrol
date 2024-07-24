@@ -40,20 +40,51 @@
         background-image: url('../assets/icons/Icon_persona1.svg');
     }
 
-    input {
-        padding: 0px 20px;
-        border: 2.3px solid $--frits-grey;
-        border-radius: 23px;
-        font-size: $--lg;
-        font-family: 'Montserrat';
-    }
+    .inputContainer {
+        display: grid;
+        position: relative;
+        overflow: hidden;
 
-    input::placeholder {
-        color: $--frits-grey;
-    }
+        input {
+            padding: 0px 20px;
+            border: 2.3px solid $--frits-grey;
+            border-radius: 23px;
+            font-size: $--lg;
+            font-family: 'Montserrat';
+        }
+        
+        .isHiidenValue {
+            color: transparent;
+        }
 
-    input:disabled {
-        background-color: $--white;
-        cursor: not-allowed;
-      }
+        .transformedValue {
+            position: absolute;
+            top: 0;
+            left: 22px;
+            width: 0px;
+            height: 43px;
+            display: flex;
+            align-items: center;
+            font-size: $--lg;
+            font-family: 'Montserrat';
+            transform: translateX(400px);
+            transition: transform 400ms ease-in-out;
+            color: transparent;
+        }
+
+        .transformedValue.isAnimated {
+            width: max-content;
+            transform: translateX(0);
+            color: black;
+        }
+
+        input::placeholder {
+            color: $--frits-grey;
+        }
+
+        input:disabled {
+            background-color: $--white;
+            cursor: not-allowed;
+        }
+    }
 }
