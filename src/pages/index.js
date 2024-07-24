@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import styles from '@styles/Home.module.scss';
 import Hero from '@components/Hero';
+import MainSection from 'layouts/MainSection';
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
       </Head>
       <main className={`${styles.main}`}>
         <Hero />
+        <MainSection />
       </main>
     </>
   );

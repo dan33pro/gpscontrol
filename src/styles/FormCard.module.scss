@@ -1,0 +1,117 @@
+@import 'vars';
+
+.FormCard {
+    position: relative;
+    min-width: min-content;
+    max-width: 550px;
+    width: calc(35vw);
+    height: 230px;
+    display: flex;
+    flex-direction: column;
+    padding: 30px 50px;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px $--black-tr;
+    will-change: height;
+    transition: height 100ms ease-in-out;
+
+    .btn-create {
+        position: absolute;
+        top: 16px;
+        left: 26px;
+        width: 20px;
+        height: 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        will-change: transform;
+        transition: transform 500ms ease-in-out;
+
+        img {
+            width: 20px;
+            height: 20px;
+        }
+    }
+
+    .btn-create.disabledBtn {
+        cursor: not-allowed;
+    }
+
+    .btn-create.disabledBtn:hover {
+        transform: scale(1) rotate(0deg);
+    }
+
+    .btn-create:hover {
+        transform: scale(1.1) rotate(180deg);
+    }
+
+    .inputs-form {
+        display: grid;
+        grid-auto-flow: row;
+        gap: 20px;
+        overflow: hidden;
+
+        .create-btns, .editing-btns {
+            margin-left: 88px;
+            display: flex;
+            justify-content: space-between;
+            will-change: transform;
+            transition: transform 500ms ease-in-out;
+            transform: translateX(calc((100% + 88px) * -1));
+
+            button {
+                width: 95px;
+                height: 35px;
+                background: none;
+                border-radius: 10px;
+                color: $--frits-grey;
+                font-size: $--lg;
+                font-family: 'Montserrat';
+                cursor: pointer;
+                will-change: transform;
+                transition: transform 200ms ease-in-out;
+            }
+
+            button:first-child {
+                border: 2px solid $--firts-red;
+            }
+
+            button:last-child {
+                border: 2px solid $--second-blue;
+            }
+
+            button:hover {
+                transform: scale(1.02);
+            }
+        }
+
+        .create-btns, .editing-btns {
+            justify-content: flex-end;
+            gap: 10px;
+
+            .edit-btn {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 35px;
+                height: 35px;
+
+                img {
+                    width: 25px;
+                    height: 25px;
+                }
+            }
+
+            .edit-btn:first-child, .edit-btn:last-child {
+                border: none;
+            }
+        }
+
+        .create-btns.isVisible, .editing-btns.isVisible {
+            transform: translateX(0px);
+        }
+    }
+}
+
+.FormCard.extend {
+    height: 285px;
+}
