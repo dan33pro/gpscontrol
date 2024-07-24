@@ -7,6 +7,8 @@
     align-items: center;
     justify-content: center;
     padding: 30px;
+    position: relative;
+    overflow: hidden;
 
     .logo {
         position: absolute;
@@ -49,6 +51,7 @@
             img {
                 grid-row: 1 / 5;
                 width: 34vw;
+                max-width: 467px;
                 height: auto;
             }
 
