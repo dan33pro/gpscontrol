@@ -8,6 +8,9 @@
           "@components/*": [
               "components/*"
           ],
+          "@layouts/*": [
+              "layouts/*"
+          ],
           "@containers/*": [
               "containers/*"
           ],

@@ -1,0 +1,59 @@
+@import 'vars';
+
+.SimpleInput {
+    height: 43px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 30px;
+
+    .container-icon {
+        align-self: center;
+        height: 30px;
+        width: 28px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        will-change: background-image;
+        transition: background-image 100ms ease-in-out;
+    }
+
+    .icon-brand {
+        background-image: url('../assets/icons/Icon_vehiculo.svg');
+    }
+
+    .icon-brand-focus {
+        background-image: url('../assets/icons/Icon_vehiculo1.svg');
+    }
+
+    .icon-branch {
+        background-image: url('../assets/icons/Icon_puntoubicacion.svg');
+    }
+
+    .icon-branch-focus {
+        background-image: url('../assets/icons/Icon_puntoubicacion1.svg');
+    }
+
+    .icon-applicant {
+        background-image: url('../assets/icons/Icon_persona.svg');
+    }
+
+    .icon-applicant-focus {
+        background-image: url('../assets/icons/Icon_persona1.svg');
+    }
+
+    input {
+        padding: 0px 20px;
+        border: 2.3px solid $--frits-grey;
+        border-radius: 23px;
+        font-size: $--lg;
+        font-family: 'Montserrat';
+    }
+
+    input::placeholder {
+        color: $--frits-grey;
+    }
+
+    input:disabled {
+        background-color: $--white;
+        cursor: not-allowed;
+      }
+}
