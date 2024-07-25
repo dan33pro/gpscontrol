@@ -1,48 +1,10 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import AppContext from '@context/AppContext';
 import styles from '@styles/SimpleTable.module.scss';
-
-const dataDefault = [
-  {
-    brand: 'Mazda',
-    branch: 'Chapinero',
-    applicant: 'David Sandoval',
-  },
-  {
-    brand: 'Mercedez',
-    branch: 'Chapinero',
-    applicant: 'David Sandoval',
-  },
-  {
-    brand: 'Chevrolet',
-    branch: 'Chapinero',
-    applicant: 'David Sandoval',
-  },
-  {
-    brand: 'Suzuiki',
-    branch: 'Chapinero',
-    applicant: 'David Sandoval',
-  },
-  {
-    brand: 'Renault',
-    branch: 'Chapinero',
-    applicant: 'David Sandoval',
-  },
-  {
-    brand: 'Nissan',
-    branch: 'Chapinero',
-    applicant: 'David Sandoval',
-  },
-  {
-    brand: 'Toyota',
-    branch: 'Chapinero',
-    applicant: 'David Sandoval',
-  },
-];
+import { getInteresteds, deleteInterested } from '@services/api/interesteds';
 
 const SimpleTable = () => {
-  const { currentEdit, updateCurrentEdit, updateLastDelete, handlerEditing, updateValuesInputs } = useContext(AppContext);
-  const [registros, setRegistros] = useState(dataDefault);
+  const { state, currentEdit, updateCurrentEdit, updateLastDelete, handlerEditing, updateValuesInputs, registros, setRegistros } = useContext(AppContext);
 
   const editRegistro = (registro, index) => {
     updateCurrentEdit({ registro, index });
@@ -63,6 +25,7 @@ const SimpleTable = () => {
   };
 
   const deleteRegistro = (registro, index) => {
+    deleteInterested(registro.id_interested);
     updateCurrentDelete({ registro, index });
     updateLastDelete({ registro, index });
     const newRegistros = registros.filter((registro, i) => i != index);
@@ -70,8 +33,25 @@ const SimpleTable = () => {
       updateCurrentDelete({ registro: null, index: -1 });
       setRegistros(newRegistros);
       updateValuesInputs(registro.brand, registro.branch, registro.applicant);
+      if (state.isEditing) {
+        handlerEditing(false);
+        updateCurrentEdit({ registro: null, index: -1 });
+      }
     }, 200);
   };
+
+  const getData = async () => {
+    const res = await getInteresteds();
+    if (res.status == 200) {
+      setRegistros(res.data);
+    }
+  };
+
+  useEffect(() => {
+    if (registros.length == 0) {
+      getData();
+    }
+  }, []);
 
   return (
     <aside className={styles.SimpleTable}>

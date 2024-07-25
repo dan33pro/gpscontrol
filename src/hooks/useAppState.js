@@ -59,6 +59,9 @@ const useAppState = () => {
     setValueApplicant(applicant);
   };
 
+  // Regsitros
+  const [registros, setRegistros] = useState([]);
+
   return {
     state,
     handlerEditing,
@@ -74,6 +77,8 @@ const useAppState = () => {
     updateValuesInputs,
     lastDelete,
     updateLastDelete,
+    registros,
+    setRegistros,
   };
 };
 
