@@ -49,7 +49,7 @@
             padding: 0px 20px;
             border: 2.3px solid $--frits-grey;
             border-radius: 23px;
-            font-size: $--lg;
+            @include responsive-font-size(lg);
             font-family: 'Montserrat';
         }
         
@@ -65,7 +65,7 @@
             height: 43px;
             display: flex;
             align-items: center;
-            font-size: $--lg;
+            @include responsive-font-size(lg);
             font-family: 'Montserrat';
             transform: translateX(400px);
             transition: transform 400ms ease-in-out;
@@ -85,6 +85,17 @@
         input:disabled {
             background-color: $--white;
             cursor: not-allowed;
+        }
+    }
+}
+
+@media (max-width: 400px) {
+    .SimpleInput {
+        gap: 10px;
+
+        .container-icon {
+            height: 20px;
+            width: 18px;
         }
     }
 }
