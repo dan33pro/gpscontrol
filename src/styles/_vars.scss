@@ -13,4 +13,40 @@ $--md: 14px;
 $--lg: 16px;
 $--ul-lg: 18px;
 
-$linear-gradient: linear-gradient(180deg, rgba(198,0,126,1) 44%, rgba(226,128,190,1) 100%);
+$linear-gradient: linear-gradient(180deg, rgba(198, 0, 126, 1) 44%, rgba(226, 128, 190, 1) 100%);
+
+@mixin responsive-font-size($size) {
+    @if $size ==sm {
+        font-size: $--sm;
+    }
+
+    @else if $size ==md {
+        font-size: $--md;
+    }
+
+    @else if $size ==lg {
+        font-size: $--lg;
+    }
+
+    @else if $size ==ul-lg {
+        font-size: $--ul-lg;
+    }
+
+    @media (max-width: 560px) {
+        @if $size ==sm {
+            font-size: 8px;
+        }
+
+        @else if $size ==md {
+            font-size: 10px;
+        }
+
+        @else if $size ==lg {
+            font-size: 12px;
+        }
+
+        @else if $size ==ul-lg {
+            font-size: 14px;
+        }
+    }
+}

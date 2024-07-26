@@ -69,9 +69,18 @@ const SimpleTable = () => {
                   ${currentDelete.index == index ? styles.isDeleting : ''}`}
               key={`registro-${index}`}
             >
-              <li>{registro.brand}</li>
-              <li>{registro.branch}</li>
-              <li>{registro.applicant}</li>
+              <li>
+                <span className={styles['titles-mobile']}>Marca: </span>
+                {registro.brand}
+              </li>
+              <li>
+                <span className={styles['titles-mobile']}>Sucursal: </span>
+                {registro.branch}
+              </li>
+              <li>
+                <span className={styles['titles-mobile']}>Aspirante: </span>
+                {registro.applicant}
+              </li>
               <button
                 disabled={!(currentEdit.index == index || !currentEdit.registro)}
                 className={`

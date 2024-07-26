@@ -2,7 +2,7 @@
 
 .FormCard {
     position: relative;
-    min-width: min-content;
+    min-width: max-content;
     max-width: 550px;
     width: calc(35vw);
     height: 230px;
@@ -64,7 +64,7 @@
                 background: none;
                 border-radius: 10px;
                 color: $--frits-grey;
-                font-size: $--lg;
+                @include responsive-font-size(lg);
                 font-family: 'Montserrat';
                 cursor: pointer;
                 will-change: transform;
@@ -114,4 +114,16 @@
 
 .FormCard.extend {
     height: 285px;
+}
+
+@media (max-width: 500px) {
+    .FormCard {
+        width: calc(100vw - 60px);
+    }
+}
+
+@media (max-width: 400px) {
+    .FormCard {
+        padding: 40px 20px 20px;
+    }
 }
