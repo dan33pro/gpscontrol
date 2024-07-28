@@ -4,6 +4,7 @@ module.exports = {
         amd: true,
         node: true,
         es6: true,
+        jest: true,
     },
     extends: [
         "eslint:recommended",
@@ -11,6 +12,11 @@ module.exports = {
         "plugin:prettier/recommended",
         "next",
         "next/core-web-vitals",
+        'plugin:jest/recommended',
+    ],
+    plugins: [
+        'testing-library',
+        'jest',
     ],
     rules: {
         "semi": ["error", "always"],
