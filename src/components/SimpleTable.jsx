@@ -82,6 +82,7 @@ const SimpleTable = () => {
                 {registro.applicant}
               </li>
               <button
+                name={`edit-btn-${index}`}
                 disabled={!(currentEdit.index == index || !currentEdit.registro)}
                 className={`
                     ${styles['item-btn']}
@@ -90,6 +91,7 @@ const SimpleTable = () => {
                 onClick={() => editRegistro(registro, index)}
               ></button>
               <button
+                name={`delete-btn-${index}`}
                 disabled={!(currentEdit.index == index || !currentEdit.registro)}
                 className={`
                     ${styles['item-btn']}
