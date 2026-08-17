@@ -1,4 +1,4 @@
-@import 'vars';
+@use 'vars' as *;
 
 .SimpleTable {
   max-height: 70vh;
@@ -29,10 +29,10 @@
   .titles {
     li {
       height: 43px;
-      background: $--second-red;
+      background: $second-red;
       @include responsive-font-size(ul-lg);
       font-weight: 500;
-      color: $--white;
+      color: $white;
     }
 
     li:last-child {
@@ -41,7 +41,7 @@
   }
 
   .registro {
-    border-bottom: 2px solid $--second-red;
+    border-bottom: 2px solid $second-red;
     will-change: transform;
 
     .titles-mobile {
@@ -51,7 +51,7 @@
     li {
       height: 36px;
       @include responsive-font-size(lg);
-      color: $--frits-grey;
+      color: $frits-grey;
     }
 
     li:first-child,
@@ -127,8 +127,8 @@
         margin: 2px 10px 2px 0px;
         display: block;
         font-weight: bold;
-        color: $--white;
-        background: $--second-red;
+        color: $white;
+        background: $second-red;
       }
 
       li {

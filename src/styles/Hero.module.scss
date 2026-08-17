@@ -1,4 +1,4 @@
-@import 'vars';
+@use 'vars' as *;
 
 .Hero {
   width: 100vw;
@@ -45,7 +45,7 @@
         text-align: center;
         grid-row: 2 / 3;
         font-size: 7vw;
-        color: $--firts-blue;
+        color: $firts-blue;
       }
 
       img {
@@ -59,12 +59,12 @@
         text-align: center;
         grid-row: 3 / 4;
         font-size: 4.5vw;
-        color: $--firts-blue;
+        color: $firts-blue;
         text-shadow:
-          -2px -2px 0 $--white,
-          2px -2px 0 $--white,
-          -2px 2px 0 $--white,
-          2px 2px 0 $--white;
+          -2px -2px 0 $white,
+          2px -2px 0 $white,
+          -2px 2px 0 $white,
+          2px 2px 0 $white;
       }
     }
 
@@ -78,7 +78,7 @@
       flex-wrap: wrap;
 
       li a {
-        color: $--second-blue;
+        color: $second-blue;
       }
     }
   }
@@ -91,8 +91,8 @@
   width: 100vh;
   height: 100vh;
   border-radius: 50%;
-  background: $--white;
-  box-shadow: 0px 0px 55px 20px $--black-tr;
+  background: $white;
+  box-shadow: 0px 0px 55px 20px $black-tr;
   will-change: transform;
   animation: circle-scale 4s infinite;
   z-index: 1;

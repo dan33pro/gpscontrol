@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect, useCallback } from 'react';
 import AppContext from '@context/AppContext';
 import styles from '@styles/SimpleTable.module.scss';
 import { getInteresteds, deleteInterested } from '@services/api/interesteds';
@@ -40,18 +40,18 @@ const SimpleTable = () => {
     }, 200);
   };
 
-  const getData = async () => {
+  const getData = useCallback(async () => {
     const res = await getInteresteds();
     if (res.status == 200) {
       setRegistros(res.data);
     }
-  };
+  }, [setRegistros]);
 
   useEffect(() => {
     if (registros.length == 0) {
       getData();
     }
-  }, []);
+  }, [getData, registros.length]);
 
   return (
     <aside className={styles.SimpleTable}>

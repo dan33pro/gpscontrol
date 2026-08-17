@@ -1,19 +1,15 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect, useCallback } from 'react';
 import AppContext from '@context/AppContext';
 import styles from '@styles/SimpleInput.module.scss';
 
 const SimpleInput = ({ type }) => {
   const { state, valueBrand, updateBrand, valueBranch, updateBranch, valueApplicant, updateApplicant, lastDelete } = useContext(AppContext);
-  const [currentIcon, setCurrentIcon] = useState(getIconClass());
-
+  const [currentIcon, setCurrentIcon] = useState('');
   const [isDisabled, setIsDisabled] = useState(true);
-  const toggleDisabled = (newValue) => {
-    setIsDisabled(newValue);
-  };
 
   const [isHiddenValue, setIsHiddenValue] = useState(false);
 
-  function getIconClass() {
+  const getIconClass = useCallback(() => {
     switch (type) {
       case 'brand':
         return state.isEditing || state.isCreating ? 'icon-brand-focus' : 'icon-brand';
@@ -24,7 +20,7 @@ const SimpleInput = ({ type }) => {
       default:
         return '';
     }
-  }
+  }, [type, state.isEditing, state.isCreating]);
 
   function getPlaceholder() {
     switch (type) {
@@ -69,8 +65,8 @@ const SimpleInput = ({ type }) => {
 
   useEffect(() => {
     setCurrentIcon(getIconClass());
-    toggleDisabled(!state.isEditing && !state.isCreating);
-  }, [state.isEditing, state.isCreating]);
+    setIsDisabled(!state.isEditing && !state.isCreating);
+  }, [getIconClass, state.isEditing, state.isCreating]);
 
   useEffect(() => {
     if (lastDelete.registro != null && lastDelete.index != -1) {

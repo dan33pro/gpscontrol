@@ -1,4 +1,4 @@
-@import 'vars';
+@use 'vars' as *;
 
 .FormCard {
   position: relative;
@@ -10,7 +10,7 @@
   flex-direction: column;
   padding: 30px 50px;
   border-radius: 20px;
-  box-shadow: 0 4px 10px $--black-tr;
+  box-shadow: 0 4px 10px $black-tr;
   will-change: height;
   transition: height 100ms ease-in-out;
 
@@ -64,7 +64,7 @@
         height: 35px;
         background: none;
         border-radius: 10px;
-        color: $--frits-grey;
+        color: $frits-grey;
         @include responsive-font-size(lg);
         font-family: 'Montserrat';
         cursor: pointer;
@@ -73,11 +73,11 @@
       }
 
       button:first-child {
-        border: 2px solid $--firts-red;
+        border: 2px solid $firts-red;
       }
 
       button:last-child {
-        border: 2px solid $--second-blue;
+        border: 2px solid $second-blue;
       }
 
       button:hover {

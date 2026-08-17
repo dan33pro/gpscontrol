@@ -1,29 +1,32 @@
-$--firts-blue: #00249c;
-$--second-blue: #40cee4;
+$firts-blue: #00249c;
+$first-blue: #00249c;
+$second-blue: #40cee4;
 
-$--frits-grey: #c5c5c5;
-$--firts-red: #c6007e;
-$--second-red: #e280be;
+$frits-grey: #c5c5c5;
+$first-grey: #c5c5c5;
+$firts-red: #c6007e;
+$first-red: #c6007e;
+$second-red: #e280be;
 
-$--white: #ffffff;
-$--black-tr: #00000025;
+$white: #ffffff;
+$black-tr: #00000025;
 
-$--sm: 12px;
-$--md: 14px;
-$--lg: 16px;
-$--ul-lg: 18px;
+$sm: 12px;
+$md: 14px;
+$lg: 16px;
+$ul-lg: 18px;
 
 $linear-gradient: linear-gradient(180deg, rgba(198, 0, 126, 1) 44%, rgba(226, 128, 190, 1) 100%);
 
 @mixin responsive-font-size($size) {
   @if $size ==sm {
-    font-size: $--sm;
+    font-size: $sm;
   } @else if $size ==md {
-    font-size: $--md;
+    font-size: $md;
   } @else if $size ==lg {
-    font-size: $--lg;
+    font-size: $lg;
   } @else if $size ==ul-lg {
-    font-size: $--ul-lg;
+    font-size: $ul-lg;
   }
 
   @media (max-width: 560px) {

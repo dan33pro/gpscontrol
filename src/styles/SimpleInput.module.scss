@@ -1,4 +1,4 @@
-@import 'vars';
+@use 'vars' as *;
 
 .SimpleInput {
   height: 43px;
@@ -47,7 +47,7 @@
 
     input {
       padding: 0px 20px;
-      border: 2.3px solid $--frits-grey;
+      border: 2.3px solid $frits-grey;
       border-radius: 23px;
       @include responsive-font-size(lg);
       font-family: 'Montserrat';
@@ -79,11 +79,11 @@
     }
 
     input::placeholder {
-      color: $--frits-grey;
+      color: $frits-grey;
     }
 
     input:disabled {
-      background-color: $--white;
+      background-color: $white;
       cursor: not-allowed;
     }
   }
