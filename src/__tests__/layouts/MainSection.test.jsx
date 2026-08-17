@@ -5,9 +5,7 @@ import MainSection from '@layouts/MainSection';
 
 jest.mock('next/image', () => ({
   __esModule: true,
-  default: ({ src, alt, ...props }) => (
-    <img src={src} alt={alt} {...props} />
-  ),
+  default: ({ src, alt, ...props }) => <img src={src} alt={alt} {...props} />,
 }));
 
 jest.mock('@logos/Imagologotipo_motion.svg', () => 'mocked-image');

@@ -1,101 +1,101 @@
 @import 'vars';
 
 .SimpleInput {
-    height: 43px;
+  height: 43px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 30px;
+
+  .container-icon {
+    align-self: center;
+    height: 30px;
+    width: 28px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    will-change: background-image;
+    transition: background-image 100ms ease-in-out;
+  }
+
+  .icon-brand {
+    background-image: url('../assets/icons/Icon_vehiculo.svg');
+  }
+
+  .icon-brand-focus {
+    background-image: url('../assets/icons/Icon_vehiculo1.svg');
+  }
+
+  .icon-branch {
+    background-image: url('../assets/icons/Icon_puntoubicacion.svg');
+  }
+
+  .icon-branch-focus {
+    background-image: url('../assets/icons/Icon_puntoubicacion1.svg');
+  }
+
+  .icon-applicant {
+    background-image: url('../assets/icons/Icon_persona.svg');
+  }
+
+  .icon-applicant-focus {
+    background-image: url('../assets/icons/Icon_persona1.svg');
+  }
+
+  .inputContainer {
     display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 30px;
+    position: relative;
+    overflow: hidden;
 
-    .container-icon {
-        align-self: center;
-        height: 30px;
-        width: 28px;
-        background-size: contain;
-        background-repeat: no-repeat;
-        will-change: background-image;
-        transition: background-image 100ms ease-in-out;
+    input {
+      padding: 0px 20px;
+      border: 2.3px solid $--frits-grey;
+      border-radius: 23px;
+      @include responsive-font-size(lg);
+      font-family: 'Montserrat';
     }
 
-    .icon-brand {
-        background-image: url('../assets/icons/Icon_vehiculo.svg');
+    .isHiidenValue {
+      color: transparent;
     }
 
-    .icon-brand-focus {
-        background-image: url('../assets/icons/Icon_vehiculo1.svg');
+    .transformedValue {
+      position: absolute;
+      top: 0;
+      left: 22px;
+      width: 0px;
+      height: 43px;
+      display: flex;
+      align-items: center;
+      @include responsive-font-size(lg);
+      font-family: 'Montserrat';
+      transform: translateX(400px);
+      transition: transform 400ms ease-in-out;
+      color: transparent;
     }
 
-    .icon-branch {
-        background-image: url('../assets/icons/Icon_puntoubicacion.svg');
+    .transformedValue.isAnimated {
+      width: max-content;
+      transform: translateX(0);
+      color: black;
     }
 
-    .icon-branch-focus {
-        background-image: url('../assets/icons/Icon_puntoubicacion1.svg');
+    input::placeholder {
+      color: $--frits-grey;
     }
 
-    .icon-applicant {
-        background-image: url('../assets/icons/Icon_persona.svg');
+    input:disabled {
+      background-color: $--white;
+      cursor: not-allowed;
     }
-
-    .icon-applicant-focus {
-        background-image: url('../assets/icons/Icon_persona1.svg');
-    }
-
-    .inputContainer {
-        display: grid;
-        position: relative;
-        overflow: hidden;
-
-        input {
-            padding: 0px 20px;
-            border: 2.3px solid $--frits-grey;
-            border-radius: 23px;
-            @include responsive-font-size(lg);
-            font-family: 'Montserrat';
-        }
-        
-        .isHiidenValue {
-            color: transparent;
-        }
-
-        .transformedValue {
-            position: absolute;
-            top: 0;
-            left: 22px;
-            width: 0px;
-            height: 43px;
-            display: flex;
-            align-items: center;
-            @include responsive-font-size(lg);
-            font-family: 'Montserrat';
-            transform: translateX(400px);
-            transition: transform 400ms ease-in-out;
-            color: transparent;
-        }
-
-        .transformedValue.isAnimated {
-            width: max-content;
-            transform: translateX(0);
-            color: black;
-        }
-
-        input::placeholder {
-            color: $--frits-grey;
-        }
-
-        input:disabled {
-            background-color: $--white;
-            cursor: not-allowed;
-        }
-    }
+  }
 }
 
 @media (max-width: 400px) {
-    .SimpleInput {
-        gap: 10px;
+  .SimpleInput {
+    gap: 10px;
 
-        .container-icon {
-            height: 20px;
-            width: 18px;
-        }
+    .container-icon {
+      height: 20px;
+      width: 18px;
     }
+  }
 }

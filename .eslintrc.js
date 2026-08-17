@@ -19,6 +19,16 @@ module.exports = {
         'jest',
     ],
     rules: {
+        "prettier/prettier": ["error", { "endOfLine": "auto" }],
         "semi": ["error", "always"],
     },
+    overrides: [
+        {
+            files: ['**/__tests__/**/*', '**/*.test.js', '**/*.test.jsx'],
+            rules: {
+                'react/display-name': 'off',
+                '@next/next/no-img-element': 'off',
+            },
+        },
+    ],
 };
