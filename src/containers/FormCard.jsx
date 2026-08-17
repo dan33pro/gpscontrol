@@ -96,11 +96,16 @@ const FormCard = () => {
   useEffect(() => {
     if (state.isEditing) {
       extendCard();
-    } else if (isExtendCard) {
-      setIsExtendCard(false);
-      setTimeout(() => {
-        setIsVisibleBTNs(false);
-      }, 100);
+    } else {
+      setIsExtendCard((prev) => {
+        if (prev) {
+          setTimeout(() => {
+            setIsVisibleBTNs(false);
+          }, 100);
+          return false;
+        }
+        return prev;
+      });
     }
   }, [state.isEditing]);
 
